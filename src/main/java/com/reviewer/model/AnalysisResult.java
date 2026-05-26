@@ -26,17 +26,17 @@ public class AnalysisResult {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("╔══════════════════════════════════════════════════════╗\n");
+        sb.append("\n");
         sb.append(String.format("  %s%n", productName));
         sb.append(String.format("  Проанализировано отзывов: %d | Средняя оценка: %.1f★%n",
                 reviewCount, averageRating));
-        sb.append("──────────────────────────────────────────────────────\n");
-        sb.append("  ✅ ПЛЮСЫ:\n");
+        sb.append("\n");
+        sb.append("  ✅ Плюсы:\n");
         if (pros != null) pros.forEach(p -> sb.append("     • ").append(p).append("\n"));
-        sb.append("  ❌ МИНУСЫ:\n");
+        sb.append("  ❌ Минусы:\n");
         if (cons != null) cons.forEach(c -> sb.append("     • ").append(c).append("\n"));
         sb.append("  📝 Вывод: ").append(summary).append("\n");
-        sb.append("╚══════════════════════════════════════════════════════╝\n");
+        sb.append("\n");
         return sb.toString();
     }
 }

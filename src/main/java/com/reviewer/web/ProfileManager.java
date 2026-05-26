@@ -88,7 +88,7 @@ public class ProfileManager {
         if (user == null) return false;
 
         JsonArray profiles = user.getAsJsonArray("profiles");
-        JsonArray updated  = new JsonArray();
+        JsonArray updated = new JsonArray();
         for (JsonElement el : profiles)
             if (!el.getAsJsonObject().get("id").getAsString().equals(profileId))
                 updated.add(el);

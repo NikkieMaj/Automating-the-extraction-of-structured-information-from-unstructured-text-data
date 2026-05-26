@@ -155,7 +155,6 @@ public class ReviewBot implements Runnable {
             return;
         }
 
-        // Артикул товара
         if (!text.matches("\\d+")) {
             sendMd(chatId, "⚠️ Артикул должен состоять из цифр\\.\n\nПример: `367514477`");
             return;
@@ -205,7 +204,6 @@ public class ReviewBot implements Runnable {
         return sb.toString();
     }
 
-    /** Экранирование всех спецсимволов MarkdownV2 */
     private String esc(String t) {
         if (t == null) return "";
         return t.replace("\\","\\\\").replace("_","\\_").replace("*","\\*")
@@ -217,7 +215,6 @@ public class ReviewBot implements Runnable {
                 .replace("!","\\!");
     }
 
-    /** Отправка с Markdown, с fallback на plain text при любой ошибке */
     private void sendMd(long chatId, String text) {
         try {
             JsonObject body = new JsonObject();

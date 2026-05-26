@@ -49,8 +49,8 @@ public class ProfilesHandler implements HttpHandler {
             return;
         }
         JsonArray  profiles = ProfileManager.get().getProfiles(telegramId);
-        JsonObject user     = ProfileManager.get().getUserByTelegramId(telegramId);
-        JsonObject resp     = new JsonObject();
+        JsonObject user = ProfileManager.get().getUserByTelegramId(telegramId);
+        JsonObject resp = new JsonObject();
         resp.add("profiles", profiles);
         resp.addProperty("activeProfileId",
                 user != null ? user.get("activeProfileId").getAsString() : "default");
@@ -58,10 +58,10 @@ public class ProfilesHandler implements HttpHandler {
     }
 
     private void handleAdd(HttpExchange exchange) throws IOException {
-        String     body = readBody(exchange);
-        JsonObject req  = gson.fromJson(body, JsonObject.class);
-        long   telegramId = req.get("telegramId").getAsLong();
-        String name       = req.get("name").getAsString().trim();
+        String body = readBody(exchange);
+        JsonObject req = gson.fromJson(body, JsonObject.class);
+        long telegramId = req.get("telegramId").getAsLong();
+        String name = req.get("name").getAsString().trim();
         if (name.isEmpty()) {
             send(exchange, 400, "{\"error\":\"Имя профиля не может быть пустым\"}");
             return;
@@ -71,18 +71,18 @@ public class ProfilesHandler implements HttpHandler {
     }
 
     private void handleSwitch(HttpExchange exchange) throws IOException {
-        String     body = readBody(exchange);
+        String body = readBody(exchange);
         JsonObject req  = gson.fromJson(body, JsonObject.class);
-        long   telegramId = req.get("telegramId").getAsLong();
+        long telegramId = req.get("telegramId").getAsLong();
         String profileId  = req.get("profileId").getAsString();
         boolean ok = ProfileManager.get().switchProfile(telegramId, profileId);
         send(exchange, 200, "{\"ok\":" + ok + "}");
     }
 
     private void handleDelete(HttpExchange exchange) throws IOException {
-        String     body = readBody(exchange);
+        String body = readBody(exchange);
         JsonObject req  = gson.fromJson(body, JsonObject.class);
-        long   telegramId = req.get("telegramId").getAsLong();
+        long telegramId = req.get("telegramId").getAsLong();
         String profileId  = req.get("profileId").getAsString();
         if ("default".equals(profileId)) {
             send(exchange, 400, "{\"error\":\"Основной профиль нельзя удалить\"}");

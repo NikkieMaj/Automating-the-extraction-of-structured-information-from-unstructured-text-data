@@ -17,14 +17,12 @@
     </properties>
 
     <dependencies>
-        <!-- Playwright — браузерная автоматизация (имитирует реального пользователя) -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.47.0</version>
         </dependency>
 
-        <!-- JSON для работы с YandexGPT API -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

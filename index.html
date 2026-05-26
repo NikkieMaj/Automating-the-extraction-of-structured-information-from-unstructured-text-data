@@ -630,7 +630,6 @@ body {
     b.style.display = 'block';
   }
 
-  // ── История ────────────────────────────────────────────────────────────────
   function loadHistory() {
     if (!session) return;
     var url = '/history?telegramId=' + session.telegramId +
@@ -754,7 +753,6 @@ body {
     document.getElementById('histOverlay').classList.remove('open');
   });
 
-  // Автообновление каждые 10 сек
   setInterval(function() { if (session) loadHistory(); }, 10000);
 })();
 </script>
